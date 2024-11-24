@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard with Charts</title>
+  <style>
+    /* Сброс стилей */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+    }
+
+    /* Боковая панель */
+    .sidebar {
+      width: 250px;
+      background-color: #f4f4f4;
+      padding: 20px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .sidebar img {
+      width: 80px;
+      border-radius: 50%;
+    }
+
+    .sidebar h3 {
+      margin: 10px 0;
+    }
+
+    .sidebar p {
+      color: gray;
+    }
+
+    /* Основной контент */
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f4f4f4;
+      padding: 10px 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .navbar .links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .navbar .links a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .navbar .icon {
+      font-size: 20px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .tabs button {
+      padding: 10px 20px;
+      background-color: #f4f4f4;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+
+    .tabs button:hover {
+      background-color: #ddd;
+    }
+
+    /* Сетка графиков */
+    .charts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .chart {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      height: 300px; /* Высота графика */
+      position: relative;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Подвал */
+    .footer {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    .footer .columns {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer .columns div {
+      margin: 10px;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: #000;
+      display: block;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Боковая панель -->
+  <div class="sidebar">
+    <img src="https://via.placeholder.com/80" alt="Profile Picture">
+    <h3>Name Name</h3>
+    <p>example@gmail.com</p>
+  </div>
+
+  <!-- Основной контент -->
+  <div class="content">
+    <!-- Навигационная панель -->
+    <div class="navbar">
+      <div class="links">
+        <a href="#">Интеграция</a>
+        <a href="#">Продукты</a>
+        <a href="#">Сообщество</a>
+        <a href="#">Контакты</a>
+      </div>
+      <div class="icon">🔔</div>
+    </div>
+
+    <!-- Вкладки -->
+    <div class="tabs">
+      <button>Статистика</button>
+      <button>Настройка тестов</button>
+      <button>Интеграция</button>
+      <button>Текст</button>
+    </div>
+
+    <!-- Графики -->
+    <div class="charts">
+      <div class="chart">
+        <p>Статистика</p>
+        <canvas id="chart1"></canvas>
+      </div>
+      <div class="chart">
+        <p>Статистика</p>
+        <canvas id="chart2"></canvas>
+      </div>
+      <div class="chart">
+        <p>Статистика</p>
+        <canvas id="chart3"></canvas>
+      </div>
+      <div class="chart">
+        <p>Статистика</p>
+        <canvas id="chart4"></canvas>
+      </div>
+    </div>
+
+    <!-- Подвал -->
+    <div class="footer">
+      <div class="columns">
+        <div>
+          <h4>Use Cases</h4>
+          <a href="#">Diagramming</a>
+          <a href="#">Brainstorming</a>
+          <a href="#">Online whiteboard</a>
+          <a href="#">Team collaboration</a>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <a href="#">Design</a>
+          <a href="#">Prototyping</a>
+          <a href="#">Development features</a>
+          <a href="#">Design systems</a>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <a href="#">Blog</a>
+          <a href="#">Best practices</a>
+          <a href="#">Support</a>
+          <a href="#">Developers</a>
+          <a href="#">Resource library</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Конфигурация для графиков
+    const chartConfig = (ctx) => ({
+      type: 'line',
+      data: {
+        labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь'],
+        datasets: [{
+          label: 'Статистика',
+          data: [20, 30, 40, 50, 70, 90],
+          borderColor: 'blue',
+          backgroundColor: 'rgba(0, 0, 255, 0.2)',
+          borderWidth: 2,
+          pointRadius: 5
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true, // Сохраняет соотношение сторон
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top'
+          }
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Месяцы'
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Значения'
+            },
+            min: 0,
+            max: 100
+          }
+        }
+      }
+    });
+
+    // Создание графиков
+    new Chart(document.getElementById('chart1').getContext('2d'), chartConfig());
+    new Chart(document.getElementById('chart2').getContext('2d'), chartConfig());
+    new Chart(document.getElementById('chart3').getContext('2d'), chartConfig());
+    new Chart(document.getElementById('chart4').getContext('2d'), chartConfig());
+  </script>
+</body>
+</html>

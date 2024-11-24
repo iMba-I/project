@@ -1,0 +1,384 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+   
+}
+
+.xdd{
+    background-size: cover;
+    background-position: center;
+    background-image: url("img/background/stones_background.jpg");
+    height: 800px;
+}
+.container {
+    max-width: 1400px;
+    height: 45px;
+    margin: 0 auto;
+    padding: 0 20px;
+    /* Значение прозрачности */
+
+}
+
+header {
+    padding: 10px 0px;
+    border-bottom: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.1);
+    height: 45px;
+    font-weight: 500;
+}
+
+nav {
+    float: left;
+}
+
+nav ul {
+    list-style: none;
+    margin-top: -45px;
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+nav img {
+    height: 50px;
+}
+nav button {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.btn2.hide{
+    display: none;
+}
+.buttons {
+    display: block;
+    float: right;
+    margin-top: 5px;
+}
+.btn2:hover {
+      background-color:black;
+      color: white;
+      transition: 0.7s;
+  }
+.btn2 {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.hero {
+    display: none;
+}
+.hero.active {
+    display: block;
+    padding: 180px 0;
+    color: #fff;
+    text-align: center;
+    align-items: center;
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5)
+}
+
+.hero.active h1 {
+    font-size: 4em;
+    margin-bottom: 10px;
+}
+.hero.active p {
+    font-size: 25px;
+    margin-top: 5px;
+}
+.hero.active.line1 {
+    height: 6px;
+    width: 12%;
+    background-color: white;
+    border-radius: 4px;
+    margin-left: 44%;
+}
+
+
+.test {
+    display: none;
+}
+.test.active {
+    display: block;
+    margin-top: 15%;
+    color: #fff;
+    width: 15%;
+    height: 25%;
+    border-radius: 15px;
+    background-color: rgba(35, 35, 35, 0.7);
+    text-align: center;
+    align-items: center;
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+    margin-left: 42.5%;
+}
+
+.test.active h1 {
+    font-size: 4em;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.test.active button {
+    font-size: 20px;
+    margin-top: 10%;
+    width: 85%;
+    height: 20%;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+.test.active button:hover {
+      background-color:black;
+      color: white;
+      transition: 0.5s;
+  }
+.test.active .line1 {
+    height: 6px;
+    width: 80%;
+    background-color: white;
+    border-radius: 4px;
+    margin-left: 10%;
+}
+
+
+
+.forma {
+    display: none;
+}
+.forma.active {
+    display: block;
+    height: 35%;
+    width: 20%;
+    background-color: white;
+    margin-top: 15%;
+    margin-left: 40%;
+    border-radius: 10px;
+    position:relative;
+}
+.forma.active input{
+    width: 90%;
+    height: 9%;
+    margin-left: 3.5%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    border-radius: 5px;
+    border-width: 1px;
+}
+.forma.active p{
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+    margin-left: 3.5%;
+    font-weight: 400;
+}
+.forma.active button {
+    width: 92%;
+    margin-left: 3.5%;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    height: 10%;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+.forma.active a{
+    color: black;
+}
+.forma.active button:hover {
+      background-color:white;
+      color: black;
+      transition: 0.5s;
+  }
+
+
+.voprosi.hide{
+    display: none;
+}
+
+.voprosi{
+    display: block;
+    text-align: center;
+    align-items: center;
+}
+.voprosi h1{
+    font-size: 25px;
+    margin-bottom: 0px;
+    margin-top: 40px;
+}
+.voprosi .line1 {
+    height: 4px;
+    width: 15%;
+    background-color: black;
+    border-radius: 4px;
+    margin-left: 42.5%;
+}
+.voprosi p{
+    margin-top: 5px;
+}
+.qw_contaner{
+    height: 600px;
+    width: 40%;
+    margin-top: 2%;
+    margin-left: 30%;
+    overflow-y: auto;
+   
+}
+.qw_contaner::-webkit-scrollbar {
+    width: 0px;
+}
+.qw_contaner button{
+    color: black;
+    background-color: lightgray;
+    font-size: 20px;
+    width: 30%;
+    height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.qw_contaner button:hover {
+      background-color:black;
+      color: white;
+      transition: 0.2s;
+  }
+
+.qw{
+    width: 100%;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+.qw p{
+    margin-top: 0px;
+}
+.options {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  
+}
+
+.options input[type="radio"]{
+  padding: 0;
+  margin: 0;
+  transform: scale(2); 
+}
+
+
+
+.end_test.hide {
+    display: none;
+}
+.end_test {
+    display: block;
+    margin-top: 15%;
+    color: #fff;
+    width: 15%;
+    height: 25%;
+    border-radius: 15px;
+    background-color: rgba(35, 35, 35, 0.7);
+    text-align: center;
+    align-items: center;
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+    margin-left: 42.5%;
+}
+
+.end_test h1 {
+    font-size: 4em;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.end_test p{
+    font-size: 20px;
+}
+.end_test .line1 {
+    height: 6px;
+    width: 80%;
+    background-color: white;
+    border-radius: 4px;
+    margin-left: 10%;
+}
+
+.features {
+    padding: 50px 0;
+    direction: ;
+}
+
+.column {
+    width: 15%;
+    float: left;
+    padding: 0 10px;
+}
+
+.column h2 {
+    margin-bottom: 20px;
+}
+
+.column ul {
+    list-style: none;
+}
+
+.column li {
+    margin-left: -40px;
+    padding-top: 10px;
+}
+
+footer {
+    background-color: white;
+    color: black;
+    border-top: 1px solid black;
+    padding: 20px 0;
+}
+
+footer img {
+    height: 60px;
+    padding-left: 24%;
+}
+footer p {
+    margin-top: 0px;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        float: none;
+        text-align: center;
+    }
+
+    nav li {
+        display: block;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .buttons {
+        float: none;
+        text-align: center;
+    }
+
+    .column {
+        width: 100%;
+        float: none;
+        margin-bottom: 20px;
+    }
+}
