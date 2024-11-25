@@ -1,3 +1,6 @@
+<?php
+include 'doTestLogic.php';
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -38,7 +41,7 @@
                 <?php 
                     foreach ($questions as $index => $question) {
                         echo '<div class="qw"><br>';
-                            echo '<p>Вопрос ' . htmlspecialchars($index + 1) . ': ' . htmlspecialchars($question['title']) . '</p>';
+                            echo '<p>Вопрос ' . htmlspecialchars($index + 1) . ': ' . htmlspecialchars($question['question']) . '</p>';
                             echo '<div class="options">';
                             echo '    <label><input type="radio" name="question1" style="transform: scale(4);"></label>';
                             echo '    <label><input type="radio" name="question1" style="transform: scale(3);"></label>';

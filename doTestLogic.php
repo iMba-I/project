@@ -28,12 +28,15 @@ if ($result->num_rows === 0) {
 $row = $result->fetch_assoc();
 $tests_filename = $row['tests_filename'];
 
+// Формируем полный путь к файлу
+$tests_path = __DIR__ . '/tests/' . $tests_filename;
+
 // Шаг 2: Чтение файла с ID вопросов
 $question_ids = [];
 $today = date('Y-m-d'); // Получаем текущую дату
 
-if (file_exists($tests_filename)) {
-    $csvData = array_map('str_getcsv', file($tests_filename));
+if (file_exists($tests_path)) {
+    $csvData = array_map('str_getcsv', file($tests_path));
     
     foreach ($csvData as $line) {
         // Дата в последнем столбце
@@ -50,7 +53,7 @@ if (file_exists($tests_filename)) {
         }
     }
 } else {
-    die("Файл с ID вопросов не найден.");
+    die("Файл с ID вопросов не найден в директории tests.");
 }
 
 // Проверяем, есть ли вопросы для сегодняшней даты
@@ -61,7 +64,7 @@ if (empty($question_ids)) {
 // Шаг 3: Получение вопросов из таблицы questions
 $placeholders = implode(',', array_fill(0, count($question_ids), '?'));
 $query = $db->prepare("
-    SELECT id, title 
+    SELECT id, question 
     FROM questions 
     WHERE id IN ($placeholders)
 ");
