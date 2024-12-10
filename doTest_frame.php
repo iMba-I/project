@@ -33,30 +33,33 @@ include 'doTestLogic.php';
             <div class="line1"></div>
             <button id="startTest_button">Начать тест</button>
         </section>
-        <section class="voprosi hide" id="mainTest_form">
-            <h1>Тестирование состояния</h1>
-            <div class="line1"></div>
-            <p>старайтесь обходить нейтральные ответы</p>        
-            <div class="qw_contaner">
-                <?php 
-                    foreach ($questions as $index => $question) {
-                        echo '<div class="qw"><br>';
-                            echo '<p>Вопрос ' . htmlspecialchars($index + 1) . ': ' . htmlspecialchars($question['question']) . '</p>';
-                            echo '<div class="options">';
-                            echo '    <label><input type="radio" name="question1" style="transform: scale(4);"></label>';
-                            echo '    <label><input type="radio" name="question1" style="transform: scale(3);"></label>';
-                            echo '    <label><input type="radio" name="question1" style="transform: scale(2);"></label>';
-                            echo '    <label><input type="radio" name="question1" style="transform: scale(1);"></label>';
-                            echo '    <label><input type="radio" name="question1" style="transform: scale(2);"></label>';
-                            echo '    <label><input type="radio" name="question1" style="transform: scale(3);"></label>';
-                            echo '    <label><input type="radio" name="question1" style="transform: scale(4);"></label>';
-                          echo '</div>';
-                     echo ' </div>';
-                 }
-                  ?>
-                  <button class="bb" id="endTest_button">Закончить тестирование</button>
-              </div>
-          </section>
+        <form id="testForm">
+            <section class="voprosi hide" id="mainTest_form">
+                <h1>Тестирование состояния</h1>
+                <div class="line1"></div>
+                <p>старайтесь обходить нейтральные ответы</p>
+                <div class="qw_contaner">
+                    <?php 
+                        foreach ($questions as $index => $question) {
+                            echo '<div class="qw"><br>';
+                                echo '<p>Вопрос ' . htmlspecialchars($index + 1) . ': ' . htmlspecialchars($question['question']) . '</p>';
+                                echo '<div class="options">';
+                                echo '    <label><input type="radio" name="question' . $index . '" value="1" style="transform: scale(4);"></label>';
+                                echo '    <label><input type="radio" name="question' . $index . '" value="2" style="transform: scale(3);"></label>';
+                                echo '    <label><input type="radio" name="question' . $index . '" value="3" style="transform: scale(2);"></label>';
+                                echo '    <label><input type="radio" name="question' . $index . '" value="4" style="transform: scale(1);"></label>';
+                                echo '    <label><input type="radio" name="question' . $index . '" value="5" style="transform: scale(2);"></label>';
+                                echo '    <label><input type="radio" name="question' . $index . '" value="6" style="transform: scale(3);"></label>';
+                                echo '    <label><input type="radio" name="question' . $index . '" value="7" style="transform: scale(4);"></label>';
+                                echo '</div>';
+                            echo '</div>';
+                        }
+                    ?>
+                    <button type="button" class="bb" id="endTest_button">Закончить тестирование</button>
+                </div>
+            </section>
+        </form>
+
 
           <section class="end_test hide" id="endTest_form">        
             <h1>Emply</h1>
@@ -123,8 +126,24 @@ include 'doTestLogic.php';
       });
 
         endTest_button.addEventListener('click', () => {
-          mainTest_form.classList.add('hide');
-          endTest_form.classList.remove('hide');
+
+        const formData = new FormData(document.getElementById('testForm'));
+
+        fetch('processTest.php', {
+                method: 'POST',
+                body: formData
+            })
+        .then(response => response.json())  // Ожидаем JSON ответ от сервера
+        .then(data => {
+            // Обрабатываем ответ сервера (например, выводим его на экран)
+            alert('Тест отправлен! Результаты: ' + JSON.stringify(data));
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+        });
+
+        mainTest_form.classList.add('hide');
+        endTest_form.classList.remove('hide');
       });
 
   </script>
