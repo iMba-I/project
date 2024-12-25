@@ -110,25 +110,7 @@ if (key_exists('exit', $_POST)) {
     <link rel="stylesheet" href="test_style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <style>
-        .block {
-            width: 100%;
-            height: 100vh; /* Full viewport height */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2rem;
-            color: white;
-        }
-
-        .block1 {
-            background-color: #3498db;
-        }
-
-        .block2 {
-            background-color: #e74c3c;
-        }
-    </style>
+    
 </head>
 
 <body>
@@ -169,21 +151,55 @@ if (key_exists('exit', $_POST)) {
                 <!-- Табы и графики -->
                 <section class="content">
                     <div class="tabs">
-                        <button>Статистика</button>
-                        <button>Настройка тестов</button>
-                        <button>Интеграция</button>
+                        <button class="tab-button active" data-tab = "statistics">Статистика</button>
+                        <button class="tab-button" data-tab = "test-settings">Настройка тестов</button>
+                        <button class="tab-button" data-tab = "integration">Интеграция</button>
                         <button>Текст</button>
                         <button>Текст</button>
                     </div>
                     <!-- Графики -->
-                    <div class="charts">
-                        <div class="chart">
-                            <p>Среднее значение</p>
-                            <canvas id="chart1"></canvas>
+                    <div class="tab-content" id="statistics">
+                        <div class="charts">
+                            <div class="chart">
+                                <p>Среднее значение</p>
+                                <canvas id="chart1"></canvas>
+                            </div>
+                            <div class="chart">
+                                <p>Медианное значение</p>
+                                <canvas id="chart2"></canvas>
+                            </div>
                         </div>
-                        <div class="chart">
-                            <p>Медианное значение</p>
-                            <canvas id="chart2"></canvas>
+                    </div>
+                     <div class="tab-content" id="test-settings" style="display: none;">
+                        <div class="test-cards">
+                            <!-- Карточка теста 1 -->
+                            <div class="test-card">
+                                <img src="img/img_body/donut_pink.png" alt="Test Icon">
+                                <div class="test-info">
+                                    <h3>Satisfaction testing</h3>
+                                    <p>Getting data on 2 weeks of stress levels by new staff.</p>
+                                </div>
+                                <button class="edit-btn">
+                                    <img src="img/img_body/edit.png" alt="Edit">
+                                </button>
+                            </div>
+
+                            <!-- Карточка теста 2 -->
+                            <div class="test-card">
+                                <img src="img/img_body/brush_roller.png" alt="Test Icon">
+                                <div class="test-info">
+                                    <h3>Satisfaction testing</h3>
+                                    <p>Testing the condition of employees after a long creative association.</p>
+                                </div>
+                                <button class="edit-btn">
+                                    <img src="img/img_body/edit.png" alt="Edit">
+                                </button>
+                            </div>
+
+                            <!-- Добавить новый тест -->
+                            <div class="add-test-card">
+                                <button class="add-test-btn">+</button>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -270,6 +286,27 @@ if (key_exists('exit', $_POST)) {
     // Создание графиков
     new Chart(document.getElementById('chart1').getContext('2d'), averageConfig);
     new Chart(document.getElementById('chart2').getContext('2d'), medianConfig);
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    // Добавляем обработчик событий для каждой кнопки
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Получаем идентификатор вкладки из атрибута data-tab
+            const targetTab = button.getAttribute('data-tab');
+
+            // Скрываем все элементы содержимого
+            tabContents.forEach(content => content.style.display = 'none');
+
+            // Отображаем только целевой элемент содержимого
+            document.getElementById(targetTab).style.display = 'block';
+
+            // Убираем класс активности у всех кнопок и добавляем его текущей кнопке
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+        });
+    });
+
 </script>
 
 </html>
